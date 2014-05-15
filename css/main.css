@@ -151,17 +151,17 @@ header h1 {
     margin: 0 0 0 382px;
 }
 .tip-nav {
-	clear:both;
-	overflow:hidden;
 	margin:0 0 30px;
 }
 .tip-nav li {
-	float:left;
+	position:relative;
+	display:inline-block;
 	font-size:14px;
 	line-height:18px;
 	font-weight:bold;
     font-family:'Ekibastuz';
 	list-style:none;
+	vertical-align:top;
     padding:0 28px 0 0;
 	margin:0 10px 0 0;
 	background:url('../img/nav_arrow.png') no-repeat right top;
@@ -171,12 +171,52 @@ header h1 {
 	margin-right:0;
 	background:none;
 }
+.tip-nav > li.hover {
+	cursor:pointer;
+}
+.tip-nav li.hover {
+	padding-right:28px;
+}
+.tip-nav li.hover:hover {
+	background:url('../img/nav_arrow.png') no-repeat right top;
+}
 .tip-nav > .home {
 	width:76px !important;
 }
 .tip-nav > .home > a {
 	visibility:hidden;
 }
+.tip-nav li ul {
+	position:absolute;
+	left:0;
+	top:-16px;
+	width:313px;
+	padding:16px 0 12px 20px;
+	margin:0;
+	background:url('../img/nav_opacity.png') repeat;
+}
+.tip-nav li ul li {
+	white-space:nowrap;
+	font-size:14px;
+	line-height:18px;
+	font-weight:bold;
+    font-family:'Ekibastuz';
+    padding:0;
+	margin:0 0 4px;
+	padding:0;
+	background:none;
+}
+.tip-nav li ul li a {
+	display:block;
+	width:293px;
+	padding:0 23px 0 0;
+}
+.tip-nav li ul li a:hover {
+    color:#009564;
+	text-decoration:none;
+}
+
+
 /*
 .tip-nav li:last-child {
 	padding:0;
