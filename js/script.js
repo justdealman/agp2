@@ -201,15 +201,21 @@ $(document).ready(function () {
 			$('.tip-nav').css({'margin-bottom': '30px'});
 			$('nav ul li ul').hide();
 			$('nav > ul > li.level1').removeClass('hover active passive');
-			var current = $(this).parents('.level1').addClass('active');
-			current.siblings().addClass('passive');
-			if ( current.index() == 0 ) {
-				$('.slide-insert').css({'margin-top': '-22px'});
-				$('.tip-nav').css({'margin-bottom': '34px'});
+			var current = $(this).parents('.level1');
+			if ( current.length ) {
+				current.addClass('active');
+				current.siblings().addClass('passive');
+				if ( current.index() == 0 ) {
+					$('.slide-insert').css({'margin-top': '-22px'});
+					$('.tip-nav').css({'margin-bottom': '34px'});
+				}
+				if ( current.index() == 2 ) {
+					$('.slide-insert').css({'margin-top': '22px'});
+					$('.tip-nav').css({'margin-bottom': '8px'});
+				}
 			}
-			if ( current.index() == 2 ) {
-				$('.slide-insert').css({'margin-top': '22px'});
-				$('.tip-nav').css({'margin-bottom': '8px'});
+			else {
+				$('nav > ul > li.level1:nth-child(2)').addClass('active').siblings().addClass('passive');
 			}
 			$('nav ul').hover(
 				function() {
