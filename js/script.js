@@ -437,9 +437,8 @@ $(document).ready(function () {
 
 	// load mCustomScrollBar if it must be here
 
-	
-					
-	var scrollvalue = 1;
+	var target = 1;
+	var slidespeed = 300;
 	
 	$('.b-history').each(function() {
 	
@@ -453,275 +452,40 @@ $(document).ready(function () {
 				},
 				callbacks:{
 					whileScrolling:function(){
-				
-						if ($(this).find('.a').length>0 && scrollvalue == 1) {
-				
-							if ($(this).hasClass('active1')) {
-								if ( $(this).find('.a').offset().top>225 && $(this).find('.a').offset().top>=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 0*documentHeight + "px"}, 300);
-									$(this).removeClass('active1');
-								}
-							}
-							else {
-								if ( $(this).find('.a').offset().top<223 && $(this).find('.a').offset().top<=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 1*documentHeight + "px"}, 300);
-									$(this).addClass('active1');
-								}
-							}
 						
-						}
-
-						if ($(this).find('.b').length>0 && scrollvalue == 1) {
-						
-							if ($(this).hasClass('active2')) {
-								if( $(this).find('.b').offset().top>225 && $(this).find('.b').offset().top>=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 1*documentHeight + "px"}, 300);
-									$(this).removeClass('active2');
-								}
+						$(this).find('span.anchor.special').each(function() {
+							if ( $(this).offset().top < 225 && $(this).offset().top > 215 ) {
+								target = $(this).attr('data-number');
+								$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
 							}
-							else {
-								if( $(this).find('.b').offset().top<223 && $(this).find('.b').offset().top<=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 2*documentHeight + "px"}, 300);
-									$(this).addClass('active2');
-								}
-							}
-						
-						}
-						
-						if ($(this).find('.c').length>0 && scrollvalue == 1) {
-
-							if ($(this).hasClass('active3')) {
-								if( $(this).find('.c').offset().top>225 && $(this).find('.c').offset().top>=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 2*documentHeight + "px"}, 300);
-									$(this).removeClass('active3');
-								}
-							}
-							else {
-								if( $(this).find('.c').offset().top<223 && $(this).find('.c').offset().top<=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 3*documentHeight + "px"}, 300);
-									$(this).addClass('active3');
-								}
-							}
-						
-						}
-						
-						if ($(this).find('.d').length>0 && scrollvalue == 1) {
-
-							if ($(this).hasClass('active4')) {
-								if( $(this).find('.d').offset().top>225 && $(this).find('.d').offset().top>=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 3*documentHeight + "px"}, 300);
-									$(this).removeClass('active4');
-								}
-							}
-							else {
-								if( $(this).find('.d').offset().top<223 && $(this).find('.d').offset().top<=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 4*documentHeight + "px"}, 300);
-									$(this).addClass('active4');
-								}
-							}
-							
-						}
-						
-						if ($(this).find('.e').length>0 && scrollvalue == 1) {
-
-							if ($(this).hasClass('active5')) {
-								if( $(this).find('.e').offset().top>225 && $(this).find('.e').offset().top>=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 4*documentHeight + "px"}, 300);
-									$(this).removeClass('active5');
-								}
-							}
-							else {
-								if( $(this).find('.e').offset().top<223 && $(this).find('.e').offset().top<=224){
-									$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 5*documentHeight + "px"}, 300);
-									$(this).addClass('active5');
-								}
-							}
-							
-						}
-						
+						})
 					}
 
 				}
 			});
 		}
 		
+		$(this).find('.slider').each(function() {
+			$(this).flexslider();
+		});
 
-		
-		
-		
-		
-		
+		$(this).find('span.anchor').bind('click', function() {
+			target = $(this).attr('data-number');
+			$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+		});
+
+		$(this).find('.history-stages img').click(function() {
+			target = $(this).attr('data-stage');
+			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('span.anchor.special[data-number^="'+target+'"]').position().top ) < documentHeight ) {
+				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
+				$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+			}
+			else {
+				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.anchor.special[data-number^="'+target+'"]');
+				$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+			}
+		});
 		
 	});
-
-    // load flexslider if it must be here
-	
-	$('.b-history').each(function() {
-		
-		if($(this).find('#b-slider-history').length>0){
-			$(this).find('#b-slider-history').flexslider();
-		}
-		if($(this).find('#b-slider-history2').length>0){
-			$(this).find('#b-slider-history2').flexslider();
-		}
-		if($(this).find('#b-slider-history3').length>0){
-			$(this).find('#b-slider-history3').flexslider();
-		}
-		if($(this).find('#b-slider-history4').length>0){
-			$(this).find('#b-slider-history4').flexslider();
-		}
-		if($(this).find('#b-slider-history5').length>0){
-			$(this).find('#b-slider-history5').flexslider();
-		}
-		if($(this).find('#b-slider-history6').length>0){
-			$(this).find('#b-slider-history6').flexslider();
-		}
-		
-	});
-	
-	
-    // функции перемотки слайдеров
-    var myoffset = 1;
-    var countofsliders; //сколько всего слайдеров
-    var downoffset; // счетчик для прокрутки вниз
-    countofsliders = $('div[data-isslider="1"]').length;
-
-    $('.up').bind("click", function(){
-        if(myoffset<countofsliders){
-            $('#b-slider-history').animate({"margin-top" : "-" + documentHeight * myoffset + "px"}, 300);
-            myoffset = myoffset + 1;
-        }
-        console.log('после сдвига вверх офсет стал ' + myoffset);
-    });
-    $('.down').bind("click", function(){
-        downoffset=countofsliders-myoffset;
-        console.log(documentHeight * myoffset-documentHeight);
-        if(myoffset===1){
-
-        }else{
-            $('#b-slider-history').animate({"margin-top" : "-"+ (documentHeight * myoffset-(documentHeight*2)) + "px"}, 300);
-            myoffset = myoffset-1;
-            console.log('после сдвига вниз офсет стал ' + myoffset);
-        }
-
-
-    });
-
-    //ищем позицию span-a
-    $('.there').bind('click', function(){
-        console.log('Положение спанчика ' + $('.a').offset().top);
-        console.log('Положение родителя ' + $('.column2').offset().top);
-
-    });
-	
-	
-
-    //перелистываем слайдеры
-	$('.b-history').each(function() {
-		/*$(this).find('.history-stages .stage1').click(function() {
-			if ( $(this).parents('.b-history').find('.column2 span.year.a').position().bottom < documentHeight ) {
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 0*documentHeight + "px"}, 300);
-			}
-			else {
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.a');
-			}
-		});*/
-
-		$(this).find('.history-stages .stage1').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - 0 ) < documentHeight ) {
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 0*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.a');
-			}
-		});
-
-		$(this).find('.history-stages .stage2').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('.column2 span.year.a').position().top ) < documentHeight ) {
-				scrollvalue = 0;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
-				$(this).parents('.b-history').find('.column2').addClass('active1');
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 1*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.b');
-			}
-		});
-
-		$(this).find('.history-stages .stage3').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('.column2 span.year.b').position().top ) < documentHeight ) {
-				scrollvalue = 0;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
-				$(this).parents('.b-history').find('.column2').addClass('active1 active2');
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 2*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.c');
-			}
-		});
-
-		$(this).find('.history-stages .stage4').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('.column2 span.year.c').position().top ) < documentHeight ) {
-				scrollvalue = 0;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
-				$(this).parents('.b-history').find('.column2').addClass('active1 active2 active3');
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 3*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.d');
-			}
-		});
-
-		$(this).find('.history-stages .stage5').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('.column2 span.year.d').position().top ) < documentHeight ) {
-				scrollvalue = 0;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
-				$(this).parents('.b-history').find('.column2').addClass('active1 active2 active3 active4');
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 4*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.e');
-			}
-		});
-
-		$(this).find('.history-stages .stage6').click(function() {
-			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('.column2 span.year.e').position().top ) < documentHeight ) {
-				scrollvalue = 0;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
-				$(this).parents('.b-history').find('.column2').addClass('active1 active2 active3 active4 active5');
-				$(this).parents('.b-history').find('#b-slider-history').animate({"margin-top" : "-" + 5*documentHeight + "px"}, 300);
-				setTimeout(function () {
-					scrollvalue = 1;
-				}, 1000);
-			}
-			else {
-				scrollvalue = 1;
-				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.year.f');
-			}
-		});
-
-	
-	});
-	
 
 });

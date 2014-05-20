@@ -892,3 +892,21 @@ body {
 .slides .slides_control {
 	overflow:visible !important;
 }
+span.anchor {
+	cursor:pointer;
+    display: block;
+    float: left;
+    color: #009564;
+    font-weight: bold;
+}
+
+.slider h6 {
+	position:absolute;
+	left:0;
+	top:0;
+	color:red;
+	font-size:30px;
+	line-height:30px;
+	padding:0;
+	margin:0;
+}
