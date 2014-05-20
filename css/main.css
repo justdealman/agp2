@@ -215,6 +215,9 @@ header h1 {
     color:#009564;
 	text-decoration:none;
 }
+.tip-nav li.active ul {
+	display:none;
+}
 
 
 /*

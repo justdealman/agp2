@@ -49,6 +49,7 @@ function submenu() {
 		if ( xo.length ) {
 			$(this).addClass('hover');
 			$(this).append('<ul>'+xo+'</ul>');
+			$(this).find('ul').delay(250).fadeIn(250);
 			$(this).find('ul').css({'left': saw+'px'});
 			$(this).find('ul li a').bind('click', function() {
 				var objectid = $(this).attr('data-accessory');
@@ -82,7 +83,9 @@ function submenu() {
 		}
 	});
 	$('.slide-insert').on('mouseleave', 'li.active', function() {
-		$(this).find('ul').remove();
+		$(this).find('ul').delay(500).fadeOut(0, function() {
+			$('.slide-insert li.active ul').delay(500).remove();
+		});
 		$(this).removeClass('hover');
 	});
 }
