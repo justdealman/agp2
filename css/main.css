@@ -217,8 +217,12 @@ header h1 {
 }
 .tip-nav li.active ul {
 	display:none;
+	margin-left:40px;
 }
-
+.tip-nav li.active {
+	padding-left:40px;
+	margin-left:-40px;
+}
 
 /*
 .tip-nav li:last-child {
