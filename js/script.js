@@ -443,6 +443,7 @@ $(document).ready(function () {
 	$('.b-history').each(function() {
 	
 		var activescroll = $(this).find('.column2');
+		var clickscroll = 0;
 		
 		if($(this).find('.column2').length>0){
 			$(this).find('.column2').mCustomScrollbar({
@@ -454,12 +455,26 @@ $(document).ready(function () {
 					whileScrolling:function(){
 						
 						$(this).find('span.anchor.special').each(function() {
-							if ( $(this).offset().top < 225 && $(this).offset().top > 215 ) {
-								target = $(this).attr('data-number');
-								$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+						
+						
+							if ( clickscroll == 0 ) {
+							
+								if ( $(this).offset().top < 225 && $(this).offset().top > 215 ) {
+									target = $(this).attr('data-number');
+									$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+									console.log(target);
+								}
+								
+								
+			console.log('0');
+							
 							}
-						})
+						});
+					},
+				    onScroll:function(){
+						clickscroll = 0;
 					}
+
 
 				}
 			});
@@ -475,6 +490,7 @@ $(document).ready(function () {
 		});
 
 		$(this).find('.history-stages img').click(function() {
+			clickscroll = 1;
 			target = $(this).attr('data-stage');
 			if ( ( $(this).parents('.b-history').find('.column2 .textwraper').height() - $(this).parents('.b-history').find('span.anchor.special[data-number^="'+target+'"]').position().top ) < documentHeight ) {
 				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'bottom');
