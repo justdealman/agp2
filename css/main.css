@@ -897,11 +897,23 @@ body {
 	overflow:visible !important;
 }
 span.anchor {
-	cursor:pointer;
     display: block;
-    float: left;
     color: #009564;
     font-weight: bold;
+	padding:0 24px 0 0;
+	margin:0 0 10px;
+}
+span.anchor strong {
+	color:#4e504f;
+}
+span.anchor em {
+	display:inline-block;
+	width:18px;
+	height:20px;
+	vertical-align:top;
+	cursor:pointer;
+	margin:0 -24px 0 6px;
+	background:url('../img/anchor_icon.png') no-repeat left 3px;
 }
 
 .slider h6 {
