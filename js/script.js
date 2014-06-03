@@ -484,8 +484,8 @@ $(document).ready(function () {
 			$(this).flexslider();
 		});
 
-		$(this).find('span.anchor em').bind('click', function() {
-			target = $(this).parent().attr('data-number');
+		$(this).find('span.anchor').bind('click', function() {
+			target = $(this).attr('data-number');
 			$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
 		});
 
