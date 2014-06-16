@@ -926,3 +926,19 @@ span.anchor em {
 	padding:0;
 	margin:0;
 }
+span.year {
+	cursor:pointer;
+	position:relative;
+	padding:0 27px 0 0;
+}
+span.year em {
+	position:absolute;
+	right:0;
+	top:0;
+	display:block;
+	width:18px;
+	height:20px;
+	vertical-align:top;
+	cursor:pointer;
+	background:url('../img/anchor_icon.png') no-repeat left 3px;
+}
