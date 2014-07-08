@@ -757,14 +757,14 @@ background:pink;
 }
 
 
-.history-stages {
+.history-stages, .vacancy-gallery {
 	position:absolute;
 	left:0;
 	top:0;
 	width:200px;
 	height:200px;
 }
-.history-stages img {
+.history-stages img, .vacancy-gallery img {
 	position:absolute;
 	cursor:pointer;
 }

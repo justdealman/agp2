@@ -432,7 +432,7 @@ $(document).ready(function () {
 	$('.column1 .stage5').css({'top': sheight*2+'px', 'width': swidth-splitter+'px', 'height': sheight-splitter+'px'});
 	$('.column1 .stage6').css({'left': swidth+'px', 'top': sheight*2+'px', 'width': swidth-splitter+'px', 'height': sheight-splitter+'px'});
 	
-	$('.history-stages').css({'width': swidth*2-splitter+'px'});
+	$('.history-stages, vacancy-gallery').css({'width': swidth*2-splitter+'px'});
 	$('.column1 .single').css({'width': swidth*2-splitter+'px', 'height': sheight*3-splitter+'px'});
 
 	// load mCustomScrollBar if it must be here
@@ -500,6 +500,12 @@ $(document).ready(function () {
 				$(this).parents('.b-history').find('.column2').mCustomScrollbar('scrollTo', 'span.anchor.special[data-number^="'+target+'"]');
 				$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
 			}
+		});
+
+		$(this).find('.vacancy-gallery img').click(function() {
+			target = $(this).attr('data-vacancy');
+			$(this).parents('.b-history').find('.column3 #b-slider-history').animate({'margin-top': -(target-1) * documentHeight+ 'px' }, slidespeed);
+			return false;
 		});
 		
 	});
