@@ -942,3 +942,80 @@ span.year em {
 	cursor:pointer;
 	background:url('../img/anchor_icon.png') no-repeat left 3px;
 }
+
+.continfo {
+	float:left;
+	width:320px;
+}
+.feedform {
+	float:right;
+	width:370px;
+	margin:0 28px 0 0;
+}
+.feedform h6 {
+	font-size:12px;
+	line-height:20px;
+	padding:0;
+	margin:0 0 17px;
+}
+.feedform p {
+	padding:0 0 0 90px;
+	margin:0 0 8px;
+}
+.feedform p span {
+	float:left;
+	width:80px;
+	padding:3px 0;
+	margin:0 10px 0 -90px;
+}
+.feedform p input, .feedform p textarea {
+	width:270px;
+	font-size:12px;
+	padding:2px 4px;
+	margin:0;
+	border:1px solid #959695;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	behavior:url('./pie.htc');
+}
+.feedform p textarea {
+	height:57px;
+	resize:none;
+}
+.feedform button {
+	position:relative;
+	width:141px;
+	height:auto;
+	color:#000000;
+	font-size:12px;
+	line-height:16px;
+	text-align:center;
+	cursor:pointer;
+	padding:10px 0;
+	margin:14px 0 19px 90px;
+	background:url('../img/feedform_button.png') repeat-x top;
+	border:0;
+	-moz-box-shadow:border-box;
+	-webkit-box-shadow:border-box;
+	box-sizing:border-box;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	behavior:url('./pie.htc');
+}
+.feedform button.ready {
+	color:#ffffff;
+	background-position:0 -36px;
+}
+
+footer .openform {
+	float:left;
+	color:#666;
+    font: 12px/13px 'PT Sans', sans-serif;
+	margin:0;
+}
+footer .openform a:hover {
+	color:#666;
+	text-decoration:none;
+}

@@ -509,5 +509,14 @@ $(document).ready(function () {
 		});
 		
 	});
+	
+	if ( $(window).width() < 1580 ) {
+		$('.continfo, .feedform').css({'float': 'none'});
+		$('.continfo').css({'margin-bottom': '30px'});
+	}
+	
+	$('footer .openform a').bind('click', function() {
+		$('nav ul li > a:contains("Контакты")').trigger('click');
+	});
 
 });
